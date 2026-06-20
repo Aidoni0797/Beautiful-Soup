@@ -66,4 +66,9 @@ Blind OS command injection vulnerabilities
 Many intance of OS command injection are blind vulnerabilities. This means that the application does not return the output
 from the command within its HTTP response. Blind vulnerabilities can still be exploited, but different techniques are required.
 
-As an example, imagine a website that lets users submit feedback about the site. The user 
+As an example, imagine a website that lets users submit feedback about the site. The user enters their email address and feedback
+message. The server-side application then generates an email to a site administrator containing the feedback. To do this,
+it calls out to the mail program with the submitted details:
+mail -s "This site is great" -aFrom:peter@normal-user.net feedback@vulnerable-website.com
+
+The output from the mail command (if any) is not returned in the application's responses, so using the echo payload won't
