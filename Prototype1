@@ -52,3 +52,41 @@ Object.getPrototypeOf(myArray);
 
 let myNumber = 1;
 Object.getPrototypeOf(myNumber);
+
+Objects automatically inherit all of the properties of their assigned  prototype, unless they already have their own
+property with the same key. This anbles developers to create new objects that can reuse the properties and methods 
+of existing objects.
+
+The built-prototypes provide useful properties and methods for working with basic data types. For example, the String.prototype
+object has a toLowerCase() method. As a result, all strings automatically have a ready-to-use method for converting them to
+lowercase. This saves developers having to manually add this behavior to each new string that they create.
+
+How does object inheritance work in JavaScript?
+
+Whenever you reference a property of an object, the JavaScript engine first tries to access this directly on the object itself.
+If the object doesn't have a matching property, the JavaScript engine looks for it on the object's prototype instead.
+Given the following objects, this enables you to reference myObject.prototypeA, for example:
+
+You can use your browser console to see this behavior in action. First, create a completely empty object:
+let myObject - {};
+
+Next, type myObject followed by a dot. Notice that the console prompts you to select from a list of properties and methods:
+
+Event though there are no properties or methods defined for the object itself, it has inherited some from the built-in 
+Object.prototype.
+
+The prototype chain
+
+Note that an object's prototype is just another object, which should also have its own prototype, and so on. As virtually
+everything in JavaScript is an object under the hood, this chain ultimately leads back to the top-level Object.prototype,
+whose prototype is simply null.
+Crucially, objects inherit properties not just from their immediate prototype, but from all objects above them in the prototype
+chain, in the example above, this means that the username object has access to the properties and methods of both String.prototype
+and Obkect.prototype.
+
+Accessing an object's prototype using __proto__
+
+Every object has a special property that you can use to access its prototype. Although this doesn't have a formally
+standardized name, __proto__ is the de facto standard used by most browsers. If you're familiar with object-oriented
+languages, this property servers as both a getter and setter for the object's prototype. This means you can use it to 
+read the prototype and its properties, and even reassign them if neccesarry.
