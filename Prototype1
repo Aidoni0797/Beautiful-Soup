@@ -200,4 +200,9 @@ If the object created via JSON.parse() is subsequently merged into an existing o
 will also lead to prototype pollution during the assignment, as we saw in the previous URL-based example.
 
 Prototype pollution sinks
-A prototype pollution sink
+A prototype pollution sink is essentially just a JavaScript function or DOM element that you're able to access via 
+prototype pollution, which enables you to execute arbitrary JavaScript or system commands. We've covered some client-side
+sinks extensively in our topic on DOM XSS.
+
+As prototype pollution lets you control properties that would otherwise be inaccessible, this potentially enables you to
+reach a number of additional sinks within the target application. Developers who are unfamiliar with prototype
