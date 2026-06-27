@@ -106,4 +106,24 @@ other object. This means developers can customize or override the behaviour of b
 to perform useful operations.
 
 For example, modern JavaScript provides the trim() method for strings, which enables you to easily remove any leading
-or trailling whitespace. Before this built-in method was 
+or trailling whitespace. Before this built-in method was introduced, developers sometimes added their own custom
+implementation of this behaviour to the String.prototype object by doing something like this:
+String.prototype.removeWhitespace = function(){
+    // remove leading and trailing whitespace
+}
+
+Thanks to the prototypal inheritance, all strings would then have access to this method:
+let searchTerm = "  example ";
+searchTerm.removeWhitespace();    // "example"
+
+How do prototype pollution vulnerabilities arise?
+
+Prototype pollution vulnerabilities typically arise when a JavaScript function recursively merges an object caontaining
+user-controllable properties into an existing object, without first sanitizing the keys. This can allow an attacker 
+to inject a property with a key like __proto__, along with arbitrary nested properties.
+
+Due to the special meaning of __proto__ in a JavaScript context, the merge operation may assign the nested properties
+to the object's prototype instead of the target object itself. As a result, the attacker can pollute the prototype with
+properties containing harmful values, which may subsequently be used by the application in a dangerous way.
+
+It's possible to pollute any prototype object, but this most commonly occurs with the built-in
