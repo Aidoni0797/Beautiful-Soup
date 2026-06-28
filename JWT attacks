@@ -215,4 +215,47 @@ to help you test for this vulnerability:
 1. With the extension loaded, in Burp's main tab bar, go to the JWT Editor Keys tab.
 2. Generate a new RSA key.
 3. Send a request containing a JWT to Buro Repeater
+4. In the message editor, switch to the extension-generate JSON Web Token tab and modify the token's payload however you like.
+5. Click Attack, then select Embedded JWK. When prompted, select your newly generated RSA key.
+6. Send the request to test how the server responds.
+
+You can also perform this attack manually by adding the jwk header yourself. However, you may also need to update the JWTs kid
+header parameter to match the kid of the embedded key. The extension's built-in attack takes care of this step for you.
+
+Injecting self-signed JWTs via the jku parameter
+
+Instead of embedding public keys directly using the jwk header parameter, some servers let you use the jku (JWK Set URL) header
+parameter to reference a JWK Set containing the key. When verifyint the signature, the server fetches the relevant key from
+this URL.
+
+JWK Sett
+A JWK Set is a JSON object containing an array of JWKs representing different keys. You can see an example of this below.
+{
+    "keys": [
+        {
+            "kty": "RSA",
+            "e": "AQAB",
+            "kid": "75d0ef47-af89-47a9-9061-7c02a610d5ab",
+            "n": "o-yy1wpYmffgXBxhAUJzHHocCuJolwDqql75ZWuCQ_cb33K2vh9mk6GPM9gNN4Y_qTVX67WhsN3JvaFYw-fhvsWQ"
+        },
+        {
+            "kty": "RSA",
+            "e": "AQAB",
+            "kid": "d8fDFo-fS9-faS14a9-ASf99sa-7c1Ad5abA",
+            "n": "fc3f-yy1wpYmffgXBxhAUJzHql79gNNQ_cb33HocCuJolwDqmk6GPM4Y_qTVX67WhsN3JvaFYw-dfg6DH-asAScw"
+        }
+    ]
+}
+JWK Sets like this are sometimes exposed publicly via a standard endpoint, such as /.wll-known/jwks.json
+
+More secure websites will only fetch keys from trusted domains, but you can sometimes take advantage of URL parsing 
+discrepancies to bypass this kind of filtering. We covered some examples of these in our topic on SSRF.
+
+Injecting self-signed JWTs via the kid parameter
+Servers may use several cryptographic keys for signing different kinds of data, not just JWTs.
+For this reason, the header of a JWT may contain a kid (Ke ID) parameter, which helps the server identify which key to use
+when verifying the signature.
+
+Verification keys are often stored as a JWK Set. In this case, the server may simply look for the JWK with the same kid as the token.
+However, the JWS specification doesn't define a concrete structure for th
 
