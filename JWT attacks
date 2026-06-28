@@ -181,4 +181,33 @@ signature. In this section, you'll learn how to exploit these to inject modified
 key rather than the server's secret.
 
 Injecting self-signed JWTs via the jwk parameter
-The JSON Web Signature (KWS)
+The JSON Web Signature (JWS) specification describes an optional jwk header parameter, which servers can use to embed their 
+public key directly within the token itself in JWK format.
+
+JWK
+A JWK (JSON Web Key) is  a stabdardized format for representing keys as a JSON object.
+
+You can see an example of this in the following JWT header:
+{
+    "kid": "ed2Nf8sb-sD6ng0-scs5390g-fFD8sfxG",
+    "typ": "JWT",
+    "alg": "RS256",
+    "jwk": {
+        "kty": "RSA",
+        "e": "AQAB",
+        "kid": "ed2Nf8sb-sD6ng0-scs5390g-fFD8sfxG",
+        "n": "yy1wpYmffgXBxhAUJzHHocCuJolwDqql75ZWuCQ_cb33K2vh9m"
+    }
+}
+
+Public and private keys
+In case you're not familiar with the terms "public key" and "private key", we've covered this as part of our materials on
+algorithm confusion attacks. For more information, see Symmetric vs assymmetric algorithm.
+
+Ideally, servers should only use a limited whitelist of public keys to verify JWT signatures. However, misconfigured 
+servers sometimes use any key that's embedded in the jwk parameter.
+
+You can exploit this behaviour by signing a modified JWT using your own RSA private key, then embedding the matching 
+public key in the jwk header.
+
+Although you can manually add or 
