@@ -72,4 +72,6 @@ The impact of JWT attacks is usually severe. If an attacker is able to create th
 they may be able to escalate their own privileges or impersonate other users, taking ful control of their accounts.
 
 How do vulnerabilities to JWT attacks arise?
-JWT vulnerabilities typically arise due to flawed JWT handling within 
+JWT vulnerabilities typically arise due to flawed JWT handling within the application itself. The various specifications 
+related to JWTs are relatively flexible by design, allowing website developers to decide many implementation details for
+themselves. THis can 
