@@ -84,4 +84,9 @@ the entire mechanism.
 
 How to work with JWTs in Burp Suite
 In case you haven't worked with JWTs in the past, we recommend familiarizing yourself with the relevant feautures of
-Burp Suite before attempting 
+Burp Suite before attempting the labs in this topic.
+
+Exploiting flawed JWT signature verification
+By design, servers don't usually store any information about the JWT's that they issue. Instead, each token is an entirely
+self-contained entity. This has several advantages, but also introduces a fundemental problem - the server doesn't actually
+know anythin
