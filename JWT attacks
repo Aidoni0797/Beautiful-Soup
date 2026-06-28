@@ -74,4 +74,13 @@ they may be able to escalate their own privileges or impersonate other users, ta
 How do vulnerabilities to JWT attacks arise?
 JWT vulnerabilities typically arise due to flawed JWT handling within the application itself. The various specifications 
 related to JWTs are relatively flexible by design, allowing website developers to decide many implementation details for
-themselves. This can result 
+themselves. This can result in them accidentally introducing vulnerabilities even when using battle-hardened libraries.
+
+These implementation flaws usually mean that the signature of the JWT is not verified property. This enables an attacker 
+to tamper with the values passed to the application via the token's payload. Even if the signature is robustly verified, 
+whether it can truly be trusted relles heavily on the server's secret key remaining a secret. If this key is leaked in some
+way, or can be guessed or brute-forced, an attacker can generate a valid  signature for any arbitrary token, compromising 
+the entire mechanism.
+
+How to work with JWTs in Burp Suite
+In case you haven't worked with JWTs in the past, we res
