@@ -1,0 +1,20 @@
+JWT attacks
+
+In this section, we'll look at how design issues and flawed handling of JSON web tokens (JWTs) can leave websites vulnerable
+to a variety of high-severity attacks. As JWTs are most commonly used in authentication, session managment, and access control
+mechanisms, these vulnerabilities can potentially compromise the entire website and its users.
+
+Don't worry if you're not familiar with JWTs and how they work - we'll cover all of the relevant details as we go. We've also
+provided a number of deliberately vulnerable labs so that you can practice exploiting these vulnerabilities safely against 
+realistic targets.
+
+Labs
+If you're already familiar with the basic concepts behind JWT attacks and just want to practice exploting them ob some 
+realistic, deliberately vulnerable targets, you can access all of the labs in this topic from the link below.
+
+What are JWTs?
+JSON web tokens (JWTs) are a standardized format for sending cryptographically signed JSON data between systems. They can 
+theoretically contain any kind of data, but are most commonly used to send information ("calims") about users as part of authentication
+session handling, and access control mechanisms.
+
+Unlike with classic session tokens, all of the data that a server needs is 
