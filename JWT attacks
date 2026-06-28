@@ -168,4 +168,17 @@ If the server uses an extremely weak secret, it may even be possible to brute-fo
 a wordlist.
 
 JWT header parametes injections
-According to the JWS specification, only the alg header parameter is mandatory, in practice, however,
+According to the JWS specification, only the alg header parameter is mandatory, in practice, however, JWT headers (also
+known as JOSE headers) often contain several other parameters. The following ones are of particular interest to attackers.
+
+- jwk (JSON Web Key) - Provides and embedded JSON object representing the key.
+- jku (JSON Web Key Set URL) - Provides a URL from which servers can fetch as set of keys containing the correct key.
+- kid (Key ID) - Provides an ID that servers can use to identify the correct key in cases where there are multiple keys
+to choose from. Depending on the format of the key, this may have a matching kid parrameter.
+
+As you can see, these user-controllable parameters each tell the recepient server which key to use when verifying the
+signature. In this section, you'll learn how to exploit these to inject modified JWTs signed using your own arbitrary
+key rather than the server's secret.
+
+Injecting self-signed JWTs via the jwk parameter
+The JSON Web Signature (KWS)
