@@ -210,4 +210,7 @@ servers sometimes use any key that's embedded in the jwk parameter.
 You can exploit this behaviour by signing a modified JWT using your own RSA private key, then embedding the matching 
 public key in the jwk header.
 
-Although you can manually add or 
+Although you can manually add or modify the jwk parameter in Burp, the JWT Editor extension provides a useful feature 
+to help you test for this vulnerability:
+1. With the extension loaded, in Burp's main tab bar, go to the JWT Editor Keys tab.
+
