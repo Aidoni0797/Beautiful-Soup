@@ -286,5 +286,13 @@ The following header parameters may also be interesting for attackers:
 from the header, but the underlying parsing library may support it anyway. If you have found a way to bypass signature
 verification, you can try injecting a city header to change the content type to text/xml or application/x-java-serialized-object,
 which can potentially enable new vectors for XXE and deserialization attacks.
-x5c (X.509 Certificate Chain) - Sometimes 
+x5c (X.509 Certificate Chain) - Sometimes used to pass the X.509 public key certificate or certificate chain of the key used
+to digitally sign the JWT. This header parameter can be used to inject self-signed certificates, similar to the jwk header
+injection attacks discussed above. Due to the complexity of the X.509 format and its extensions, parsing these cetificates
+can also introduce vulnerabilities. Details of these attacks are beyond the scope of these materials,but for more details,
+check out CVE-2017-2800 and CVE-2018-2633
+
+JWT algorithm confusion
+Even if a server uses robust secrets that you are unable to brute-force, you may still be able to forge valid JWT by signing the token
+using an algorithm that the developers haven't anticipated
 
