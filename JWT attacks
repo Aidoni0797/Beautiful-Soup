@@ -213,4 +213,6 @@ public key in the jwk header.
 Although you can manually add or modify the jwk parameter in Burp, the JWT Editor extension provides a useful feature 
 to help you test for this vulnerability:
 1. With the extension loaded, in Burp's main tab bar, go to the JWT Editor Keys tab.
+2. Generate a new RSA key.
+3. Send a request containing a JWT to Buro Repeater
 
