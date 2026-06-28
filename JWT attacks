@@ -83,4 +83,5 @@ way, or can be guessed or brute-forced, an attacker can generate a valid  signat
 the entire mechanism.
 
 How to work with JWTs in Burp Suite
-In case you haven't worked with JWTs in the past, we res
+In case you haven't worked with JWTs in the past, we recommend familiarizing yourself with the relevant feautures of
+Burp Suite before attempting 
