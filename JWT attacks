@@ -67,4 +67,9 @@ What are JWT attacks?
 JWT attacks involve a user sending modified JWTs to the server in order to achieve a malicious goal. Typically, this goal is to
 bypass authentication and access controls by impersonating another user who has already been authenticated.
 
-What is the impact
+What is the impact of JWT attacks?
+The impact of JWT attacks is usually severe. If an attacker is able to create their own valid tokens with arbirary values,
+they may be able to escalate their own privileges or impersonate other users, taking ful control of their accounts.
+
+How do vulnerabilities to JWT attacks arise?
+JWT vulnerabilities typically arise due to flawed JWT handling within 
