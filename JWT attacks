@@ -65,4 +65,6 @@ may also apply to JWE tokens.
 
 What are JWT attacks?
 JWT attacks involve a user sending modified JWTs to the server in order to achieve a malicious goal. Typically, this goal is to
-bypass authentication and access controls b
+bypass authentication and access controls by impersonating another user who has already been authenticated.
+
+What is the impact
