@@ -23,4 +23,15 @@ is a complex and dynamic problem that applies business, organizational, and lega
 Access control design desicions have to be made by humans so the potential for errors is high.
 
 Vertical access control
-Vertical access controls are me
+Vertical access controls are mechanisms that restrict access to sensitive functionality to specific types of users.
+
+With vertical access control, different types of users have access to different application functions. For example, 
+an administrator might be able to modify or delete any user's account, while an ordinary user has no access to these actions.
+Vertical access controls can be more fine-grained implementations of security models designed to enforce business policies 
+such as separation of duties and least privielege.
+
+Horizontal access control
+Horizontal access controls are mechanisms thst restrict access to resources to specific users.
+
+With horizontal access controls, different users have access to a subset of resources of the same type. For example, a 
+banking application will allow a user to view transactions and make p
