@@ -11,4 +11,16 @@ some realistic, deliberately vulnerable targets, you can access labs in this top
 
 What is access control?
 
-Access control is the application of constraints on who is
+Access control is the application of constraints on who is authorized to perform actions or access resources. In the context
+of web applications, access control is dependent on authentication and session managment.
+
+- Authentication confirms that user is who they say they are.
+- Session managment identifies which subsequent HTTP requests are being made by that same user.
+- Access control determines whether the user is allowed to carry out the action that they are attempting to perform.
+
+Broken access control are common and often present a critical security vulnerability. Design and managment of access controls
+is a complex and dynamic problem that applies business, organizational, and legal constraints to a technical implementation.
+Access control design desicions have to be made by humans so the potential for errors is high.
+
+Vertical access control
+Vertical access controls are me
