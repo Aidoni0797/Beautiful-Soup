@@ -119,5 +119,6 @@ may be able to craft a request for a dynamic resource with a static extension th
 viewed by the cache.
 
 Path mapping discrepancies 
-URL path mapping is the
+URL path mapping is the process of associating URL paths with resources on a server, such as files, scripts, or command 
+executions. There are a range of different mapping 
 
