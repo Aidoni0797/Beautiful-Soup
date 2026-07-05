@@ -115,5 +115,9 @@ Chache rules often target static resources by matching common file extensions li
 in most CDNs.
 
 If there are discrepancies in how the cache and origin server map the URL path to resources or use delimeters, an attacker
-may be able to craft a request for a dynamic resource with a static
+may be able to craft a request for a dynamic resource with a static extension that is ignored by the origin server but
+viewed by the cache.
+
+Path mapping discrepancies 
+URL path mapping is the
 
