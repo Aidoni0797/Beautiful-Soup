@@ -120,5 +120,5 @@ viewed by the cache.
 
 Path mapping discrepancies 
 URL path mapping is the process of associating URL paths with resources on a server, such as files, scripts, or command 
-executions. There are a range of different mapping 
+executions. There are a range of different mapping styles used by different 
 
