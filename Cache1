@@ -137,6 +137,13 @@ http://example.com/path/resource/param1/param2
 - /path/resource/ is an endpoint representing a resource
 - param1 and param2 are path parameters used by the server to process the request.
 
-Discrepancies in how the cache and origin server map the URL path to resources can
+Discrepancies in how the cache and origin server map the URL path to resources can result in web cache deception vulnerabilities.
+Consider the following example:
+http://example.com/user/123/profile/wcd.css
+
+- An origin server using REST-style URL mapping may interpret this as a request for the /user/123/profile endpoint and returns
+the profile information for user 123, ignoring wcd.css as a non-signficant parameter.
+- A cache that uses traditional URL mapping may view this as a request for a file named wcd.css located in the /profile
+directory under /user/123. It interprets the URL path as /user/123/profile/wcd.css. If the cache is configues
 
 
