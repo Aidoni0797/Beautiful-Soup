@@ -120,5 +120,23 @@ viewed by the cache.
 
 Path mapping discrepancies 
 URL path mapping is the process of associating URL paths with resources on a server, such as files, scripts, or command 
-executions. There are a range of different mapping styles used by different 
+executions. There are a range of different mapping styles used by different frameworks and technologies. Two common styles
+are traditional URL mapping and RESTful URL mapping.
+
+Traditional URL mapping represents a direct path to a resource located on the file system. Here's a typical example:
+http://example.com/path/in/filesystem/resource.html
+
+http://example.com points to the server.
+/path/in/filesystem/ represents the directory path in the server's file system.
+resource.html is the specific file being accessed.
+
+In contrast, REST-style URLs don't directly match the physical file structure. They abstract file path into logical parts
+of the API:
+http://example.com/path/resource/param1/param2
+- http://example.com points to the server
+- /path/resource/ is an endpoint representing a resource
+- param1 and param2 are path parameters used by the server to process the request.
+
+Discrepancies in how the cache and origin server map the URL path to resources can
+
 
