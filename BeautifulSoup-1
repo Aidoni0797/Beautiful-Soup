@@ -297,4 +297,31 @@ print(tag.get('id'))
 
 Multi-valued attributes
 HTML 4  defines a few attributes that can have nultiple values. HTML 5 removes a couple of them, but defines a few more. 
-The most common multi-valued attribute is class (that is, a tag can have more than one CSS)
+The most common multi-valued attribute is class (that is, a tag can have more than one CSS class). Others include
+rel, rev, accept-charset, headers and accessley.
+BeautifulSoup presents the value(s) of a multi-valued attribute as a list:
+css_soup = BeautifulSoup('<p class="body"></p>')
+css_soup.p['class']
+# ["body"]
+
+css_soup = BeautifulSoup('<p class="body strikeout"></p>')
+css_soup.p['class']
+# ["body", "strikeout"]
+
+if an attribute looks like it has more than one value, but it's not a multi-valued attribute as defined by any version of the 
+HTML standard, BeautifulSoup will leave the attribute alone:
+
+id_soup = BeautifulSoup('<p id="my id"></p>')
+id_soup.p['id']
+# 'my id'
+
+When you turn a tag back into a string, multiple attribute values are consolidated:
+rel_soup = BeautifulSoup('<p>Back to the <a rel="index">homepage</a></p>')
+rel_soup.a['rel']
+# ['index']
+rel_soup.a['rel'] = ['index', 'contents']
+print(rel_soup.p)
+# <p>Back to the <a rel="index contents">homepage</a></p>
+
+You can use `get_atribute_list` to get that's always a list, string, whether or not it's a multi-valued atribute
+id_soup.p.
