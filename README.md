@@ -1,4 +1,4 @@
-# iDONi-stepik-homework
-iDONi-stepik-homework
+# iDONi-learn-BeautifulSoup 
+in life first
 
-Домашка по курсу Stepik. 
+It's a interesting for iDONi
