@@ -52,4 +52,60 @@ soup.a
 # <a class ="sister" href="http://example.com/elsie" id="link1"> Elsie </a>
 
 If you need to get all the <a> tags, or anything more complicated than the first tag with a certain
-name, you'll need to use one of the methods described in 
+name, you'll need to use one of the methods described in Searching the tree, such as find_all():
+
+soup.find_all('a')
+# [<a class="sister" href="http://example.com/elsie" id="link1">Elsie</a>,
+# [<a class="sister" href="http://example.com/lacie" id="link2">Lacie</a>,
+# [<a class="sister" href="http://example.com/tillie" id="link3">Tillie</a>]
+
+6.1.2 .contents and .children
+
+A tag's children are available in a list called .contents:
+head_tag = soup.head
+head_tag
+# <head><title>The Dormouse's story</title>
+title_tag.contents
+# [u'The Dormouse's story']
+
+The BeautifulSoup object itself has children. In this case, the <html> tag is the child of the
+BeautifulSoup object:
+len(soup.contents)
+# 1
+soup.contents[0].name
+# u'html'
+
+A string does not have .contents, because it can't contain anything:
+text = title_tag.contents[0]
+text.contents
+# AttributeError: 'NavigableString' object has no attribute 'contents'
+
+Instead of getting them as a list, you can iterate a tag's children using the .children generator:
+for child in title_tag.children:
+  print(child)
+# The Dormouse's story
+
+6.1.3 .descendants
+The .content and .children attributes only consider a tag's direct children. For instance, the <head>
+tag has a single direct child-the <title> tag:
+head_tag.contents
+# [<title>The Dormouse's story</title>]
+
+But the <title> tag itself has a child: the string "The Dormouse's story". There's a sense in which
+that string is also a child of the <head> tag. The .contents attribute lets you iterate over
+all of a tag's children, recursively its direct children, the children of its direct children, and so on:
+for child in head_tag.descendants:
+  pritn(child)
+# <title>The Dormouse's story</title>
+# The Dormouse's story
+
+The <head> tag has only one child, but it has two descendants: the <title> tag and the <title>
+tag's child. The BeautifulSoup object only has one direct child (the <html> tag), but it has a
+whole lot of descendants:
+len(list(soup.children))
+# 1
+len(list(soup.descendants))
+# 25
+
+6.1.4 .string
+If a tag has only one child, and 
