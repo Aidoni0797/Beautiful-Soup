@@ -77,4 +77,47 @@ id_soup.p['id']
 # 'my id'
 
 When you turn a tag back into a string, multiple attribute values are consolidated:
-rel_soup = 
+rel_soup = BeautifulSoup('<p> Back to the <a rel="index">homepage</a></p>')
+rel_soup.a['rel']
+# {"index"}
+rel_soup.a['rel'] = ['index', 'contents']
+print(rel_soup.p)
+# <p>Back to the <a rel="index contents"> homepage</a></p>
+
+You can disable this by passing multi_valued_attributes = None as a keyword argument into the BeautifulSoup constructor:
+no_list_soup = BeautifulSoup('<p class="body strikeout"></p>', 'html', multi_valued_no_list_soup.p['class'])
+# u 'body strikeout'
+
+You can use 'get_attribute_list' to get a value that's always a list, whether or not it's a multi-valued attribute:
+id_soup.p.get_attribute_list('id')
+# ["mu id"]
+
+If you parse a document as XML, there are no multi-valued_attributes argument:
+class_is_multi = {'*':'class'}
+# [u 'body', u 'strikeout']
+
+You probably won't need to do this, but if you do, use the defaults as a guide. They implement the rules described in the
+HTML specification:
+
+from bs4.builder import builder_registry
+builder_registry.lookup('html').DEFAULT_CDATA_LIST_ATTRIBUTES
+
+5.2 NavigableString
+
+A string corresponds to a bit of text within a tag. BeautifulSoup uses the NavigableString class to contain hese bits of text:
+
+tag.string
+# u'Extremely bold'
+type(tag.string)
+# <class 'bs4.element.NaviableString'>
+
+A NavigableString is just like a Python Unicode string, except that it also supports some of the features described in
+Navigating the tree and Searching the tree. You can convert a NavigableString to a Unicode string with unicode():
+
+unicode_string = unicode(tag.string)
+unicode_string
+# u'Extremely bold'
+type(unicode_string)
+# <type 'unicode'>
+
+You can't edit a string in place, but you can replace one string with another, using replace_with():
