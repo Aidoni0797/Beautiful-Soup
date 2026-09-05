@@ -108,4 +108,31 @@ len(list(soup.descendants))
 # 25
 
 6.1.4 .string
-If a tag has only one child, and 
+If a tag has only one child, and .children attributes only consider a tag's direct children.
+For instance, the <head> tag has a single direct child-the <title> tag:
+head_tag.contents
+# [<title> The Dormouse's story </title>]
+
+But the <title> tag itself has a child: the string "The Dormouse's story". There's a sense in which
+that string is also a child of the <head> tag. The .descendants attribute lets you iterate over all
+of a tag's children, recursively: its direct children, the children of its direct, and so on:
+
+for child in head_tag.descendants:
+  print(child)
+# <title>The Dormouse's story</title>
+# The Dormouse's story
+The <head> tag has only one child, but it two descendants: the <title> tag and the <title> tag's 
+child. The BEautifulSoup object only has one direct child(the <html> tag), but it has a whole
+lt of descendants:
+len(list(soup.children))
+# 1
+len(list(soup.descendants))
+# 25
+
+6.1.4 .string
+If a tag has only one child, and that child is a NavigableString, the child is made available as
+.string:
+title_tag
+
+
+
