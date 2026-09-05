@@ -154,3 +154,32 @@ soup.name
 
 5.4. Comments and other special strings
 
+Tag, NavigableString, and BeautifulSoup cover almost everything you'll see in an HTML or XML file, but there are a few 
+leftover bits. The only one you'll probably ever need to worry about is the comment:
+
+markup = "<b><!--Hey, buddy. Want to buy a used parser?--></b>"
+soup = BeautifulSoup(markup)
+comment = soup.b.string
+type(comment)
+# <class 'bs4.element.Comment'>
+comment
+# u'Hey, buddy. Want to buy a used parser'
+
+But when it appears as part of an HTML document, a Comment is displayed with special formatting:
+print(soup.b.pretty())
+# <b>
+# <!--Hey, buddy. Want to buy a used parser?-->
+
+Beautiful Soup defines classes for anything else that might show up in an XML document: CData ProcessingInstruction,
+Declaration and Doctype. Just like  Comment, these classes are subclasses of NavigableString that add something extra 
+to the string. Here's an example that replace the comment  with a CDATA block:
+
+from bs4 import CData
+cdata = CData("A CDATA block")
+comment.replace_with(cdata)
+
+print(soup.b.prettify())
+# <b>
+# <![cDATA{A CDATA block}]>
+# </b>
+
