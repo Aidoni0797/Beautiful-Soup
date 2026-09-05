@@ -130,4 +130,27 @@ In particular, since a string can't contain anything (the way a tag may contain 
 support the .contents or .string attributes, or the find() method.
 
 If you want to use a NavigableString outside of BeautifulSoup, you should call unicode() on it to turn it into a normal
-Python Unicode string. If you don't, your 
+Python Unicode string. If you don't, your string will carry around a reference to the entire Beautiful Soup parse tree,
+even when you're done using BeautifulSoup. This is a big waste of memory.
+
+5.3 Beautiful Soup
+The Beautiful Soup object represents the parsed document as a whole. For most purposes, you can treat it as a Tag object.
+This means it supports most o fthe methods described in Navigating the tree and Searching the tree. 
+
+You can also pass a Beautiful Soup object into one of the methods defined in Modifying the tree, just as you would a Tag.
+This lets you do things like combine two parsed documents:
+doc = BeautifulSoup("<document><content/>INSERT FOOTER HERE</document", "xml">)
+footer = BeautifulSoup("<footer>Here's the footer</footer>", "xml")
+doc.find(text="INSERT FOOTER HERE").replace_with(footer)
+# u'INSET FOOTE HERE'
+print(doc)
+# <?xml version="1.0" encoding="utf-8"?>
+# <document><content/>Here's the footer</footer></document>
+
+Since the BeautifulSoup object doesn't correspond to an actual HTML or XML tag, it has no name and no attribute.
+But sometimes it's useful to look at its .name, so it's been given the special .name"[document]":
+soup.name
+#u'[document]'
+
+5.4. Comments and other special strings
+
