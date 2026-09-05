@@ -121,3 +121,13 @@ type(unicode_string)
 # <type 'unicode'>
 
 You can't edit a string in place, but you can replace one string with another, using replace_with():
+tag.string.replace_with("No longer bold")
+tag
+# <blockquote> No longer bold </blockquote>
+
+NavigableString supports most of the features described in Navigating the tree and Searching the tree, but not all of them.
+In particular, since a string can't contain anything (the way a tag may contain a string or another tag), strings don't
+support the .contents or .string attributes, or the find() method.
+
+If you want to use a NavigableString outside of BeautifulSoup, you should call unicode() on it to turn it into a normal
+Python Unicode string. If you don't, your 
