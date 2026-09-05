@@ -132,7 +132,60 @@ len(list(soup.descendants))
 6.1.4 .string
 If a tag has only one child, and that child is a NavigableString, the child is made available as
 .string:
+title_tag.string
+# u'The Dormouse's story'
+
+If a tag's only childis another tag, and that has a .string, then the parent tag is considered to have
+the same .string as its child:
+
+head_tag.contents
+# [<title>The Dormouse's story</title>]
+
+head_tag.string
+#u 'The Dormouse's story'
+
+If a tag contains more than one thing, then it's not clear what .string refer to, so .string is defined 
+to be None:
+print(soup.html.string)
+# None
+
+6.1.5 .strings and stripped_strings
+If there's more than one thing inside a tag, you can still look at just the strings. Use the .strings 
+generator:
+
+for string in soup.strings:
+  print(repr(string))
+
+These strings tend to have a lot of extra whitespace, which you can remove by using the .stripped_strings
+generator instead:
+for string in soup.stripped_strings:
+  print(repr(string))
+
+Here stings consisting entirely of whitespace are ignored, and whitespace at the beginning and end
+of strings is remoced.
+
+6.2 Going up
+Continuing the "family tree" analogy, every tag and every string has a parent: the tag that contains it.
+
+6.2.1 .parent
+You can access an element's parent with the .parent attribute. In the example "three sisters" document,
+the <head> tag is the parent of the <title> tag:
+
+title_tag = soup.title
 title_tag
 
+title_tag.parent
+
+The title string itself has a parent: the <title> tag that contains it:
+title_tag.string.parent
+
+The parent of a top-level tag like <html> is the BeautifulSoup object itself:
+html_tag = soup.html
+type(html_tag.parent)
+
+And the .parent of a BeautifulSoup object is defined as None:
+print(soup.parent)
+
+6.2.2s
 
 
