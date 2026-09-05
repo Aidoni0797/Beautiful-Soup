@@ -186,6 +186,90 @@ type(html_tag.parent)
 And the .parent of a BeautifulSoup object is defined as None:
 print(soup.parent)
 
-6.2.2s
+6.2.2 .parents
 
+You can iterate over all of an element's parents with .parents. This example uses .parents 
+to travel from an <a> tag buried deep within the document, to the very top of the document:
+link = soup.a
+link
 
+for parent in link.parents:
+  if parent is None:
+    print(parent)
+  else:
+    print(parent.name)
+
+6.3 Going sideways
+
+Consider a simple document like this:
+sibling_soup = BeaitifulSoup("<a><b>text1</b><c>text2</c></b></a>")
+print(sibling_soup.prettify())
+
+The <b> tag and the <c> tag are at the same level: they're both direct children of the same tag.
+We call them siblings. When a document is pretty-printed, siblings show up at the same 
+indentation level. You can also use this relathionship in the code you write.
+
+6.3.1 .next_sibling and .previous_sibling
+
+You can use .next_sibling andprevious_sibling to navigate between page elements that are on the same
+level of the parse tree:
+sibling_soup.b.next_sibling
+
+sibling_soup.c.previous_sibling
+
+The <b> tag has a .next_sibling, but no .previous_sibling, because there's nothing before the <b> tag 
+on the same level of the tree. For the same reason, the <c> tag has a .previous_sibling but no .next_sibling
+print(sibling_soup.b.previuos_sibling)
+print(sibling_soup.c.next_sibling)
+
+In real documents, the .next_sibling or .previous_sibling of a tag will usually be a sting containing
+whitespace. Going back to the "three sisters" document:
+<a href="http://example.com/elsie" class="sister" id="link1">Elsie</a>
+<a href="http://example.com/lacie" class="sister" id="link2">Lacie</a>
+<a href="http://example.com/tillie" class="sister" id="link3">Tillie</a>
+
+You might think that the .next_sibling of the first <a> tag would be the second <a> tag. But
+actually, it's a string: the comma and newline that separate the first <a> tag from the second:
+link = soup.a
+link
+
+link.next_sibling
+
+link.next_sibling.next_sibling
+
+6.3.2 .next_siblings and .previous_siblings
+
+You can iterate over a tag's siblings with .next_siblings or .previous_siblings
+
+for sibling in soup.a.next_siblings:
+  print(repr(sibling))
+
+for sibling in soup.find(id="link3").previous_siblings:
+  print(repr(sibling))
+
+6.4 Going back and forth
+
+Take a look at the beginning of the "three sisters" document:
+<html><head><title>The Dormouse's story </title></head>
+<p class="title"><b>The Dormouse's story </b></p>
+
+An HTML parser takes this string of characters and turns it into a series of events: "open an<html>tag",
+"open a <head> tag", "open a <title> tag", "add a string", "close the <title> tag", "open a <p> tag",
+and so on. BeautifulSoup offers tools for reconstructing the initial parse of the document.
+
+6.4.1 .next_element and .previous_element
+The .next_element attribute of a string or tag points to whatever was parsed immdiatelly afterwards.
+It might be the same as .next_sibling, but it's ususally drastically different.
+
+Here's the final <a> tag in the "three sisters" document. Its .next_sibling is a string: the
+conclusion of the sentence that was interruoted by the start of the <a> tag:
+last_a_tag = soup.find("a", id="link2")
+last_a_tag
+
+last_a_tag.next_sibling
+But the .next_element of that <a> tag, the thing that was parsed immediately after the <a> tag,
+is not the rest of that sentence: it's the word "Tillie":
+last_a_Tag.next_element
+
+That's because in the original markup, the word "Tillie" appeared before that semicolon. The parser
+encountered an <a> tag. then the word
