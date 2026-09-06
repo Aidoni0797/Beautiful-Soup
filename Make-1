@@ -68,3 +68,17 @@ del tag['another-attribute']
 tag
 # <b></b>
 
+tag['id']
+# KeyError: 'id'
+print(tag.get('id'))
+# None
+
+Multi-valued attributes
+
+HTML 4 defines a few attributes that can have multiple values. HTML5 removes a couple of them, but defines a few more.
+The most common multi-valued attribute is class (that is, a tag can have more than one CSS class). Others include
+rel, rev, accept-charset, headers and accesskey.
+BeautifulSoup presents the value{s} of a multi-valued attribute as a list:
+
+css_soup = BeautifulSoup('<p class="body"></p>')
+css_soup.p['class']
