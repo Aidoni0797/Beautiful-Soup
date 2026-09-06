@@ -82,3 +82,23 @@ BeautifulSoup presents the value{s} of a multi-valued attribute as a list:
 
 css_soup = BeautifulSoup('<p class="body"></p>')
 css_soup.p['class']
+# ["body"]
+
+css_soup = BeautifulSoup('<p class="body"></p>')
+css_soup.p['class']
+#["body"]
+
+css_soup = BeautifulSoup('<p class="body strikeput"></p>')
+css_soup.p['class']
+# ["body", "strikeout"]
+
+If an attribute lokslike it has more than one value, but it's not a multi valued attribute as defined by any version
+of the HTML standard. BeautifulSoup will leave the attribute alone:
+
+id_soup = BeautifulSoup('<p id="my id"></p>')
+id_soup.p['id']
+# 'my id'
+
+When you turn a tag back into a string, multiple attribute values are consolidated:
+rel_soup = BeautifulSoup('<p>Back to the <a rel="index">homepage</a></p>')
+rel/_soup.a['rel']
