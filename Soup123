@@ -220,5 +220,70 @@ Here's the "Three sisters" HTML document again:
 html_doc = """
 <html><head><title>The Dormouse's story</title></head>
 <body>
-<p class="title"><b>The Dormouse's story
+<p class="title"><b>The Dormouse's story</b></p>
+
+<p class="story">...</p>
 """
+
+from bs4 import BeautifulSoup
+soup = Bewautifulsoup(html_doc, 'html.parser')
+
+I'll use this is an example to show you how to move from one part of a document to another.
+
+Going down
+
+Tags may contain trings and other tags. These elements are the tag's children. BeautifulSoup provides a lot of different
+attributes for navigating and iterating over a tag's children.
+
+Note that Beautiful Soup strings don't support any of these sttributes, because a string can't have children.
+
+Navigating using tag names
+
+The simplest way to navigate the parse tree is to say the name of the tag you want. If you want the <head> tag, just
+say soup.head:
+
+soup.head
+# <head><title> The Dormouse's story </title></head>
+
+
+soup.title
+#<title>The Dormouse's story</title>
+
+You can do use this trick again to zoom in on a certain part of the parse tree. This code gets the first <b> tag beneath
+the <body> tag:
+soup.body.b
+#<b>The Dormouse's story</b>
+
+Using a tag name as an attribute will give you only the first by that name:
+soup.a
+# <a class="sister" href="http://example.com/elsie" id="link1">Elsie</a>
+
+If you need to get all the <a> tags, or anything more complicated than the first tag with a certain name, you'll need to use
+one of the methods described in Searching the tree, such as find_all():
+
+soup.find_all('a')
+#[<a class="sister" href="http://example.com/elsie" id="link1">Elsie</a>,
+<a class="sister" href="http://example.com/lacie" id="link2">Lacie</a>,
+<a class="sister" href="http://example.com/tillie" id="link3">Tillie</a>,]
+
+.contents and .children
+A tag's children are available in a list called .contents:
+
+head_tag = soup.head
+head_tag
+# <head><title> The Dormouse's story</title></head>
+
+head_tag.contents
+[<title>The Dormouse's story</title>]
+
+title_tag = head_tag.contents[0]
+title_tag
+#<title>The Dormouse's story</title>
+
+title_tag.contents
+#[u'The Dormouse's story']
+
+The BeautifulSoup object itself has children, In this case, the <html> tag is the child of the BeautifulSoup object:
+len(soup.contents)
+#1
+soup.contents[0].name
