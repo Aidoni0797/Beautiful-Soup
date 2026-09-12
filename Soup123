@@ -82,4 +82,91 @@ css_soup = BeautifulSoup('<p class="body strikeout"></p>')
 css_soup.p['class']
 #["body", strikeout"]
 
-If an attribute looks like it has more than one value, but
+If an attribute looks like it has more than one value, but it's not a multi-valued attribute as defined by any version
+of the HTML standard, Beautiful Soup will leave the attribute alone:
+id_soup = Beautiful Soup('<p id="my id"></p>')
+id_soup.p['id']
+# 'my_id'
+
+When you turn a tag back into a string, multiple attribute values are consolidated:
+
+rel_soup = BeautifulSoup('<p>Back to the <a rel="index">homepage</a></p>')
+rel_soup.a['rel']
+#['index']
+
+rel_soup.a['rel'] = ['index', 'contents']
+print(rel_soup.p)
+#<p>Back to the <a rel="index contents">homepage</a></p>
+
+You can disable this by passing multi_valued_attributes=None as a keyword argument into the BeautifulSoup constructor:
+no_list_soup = BeautifulSoup('<p lcass="body strikeout"></p>', 'html', multi_valued_attributes=None)
+no_list_soup.p['class']
+#u'body strikeout'
+
+You can use get_attribute_list to get a value that's always a list, whether or not it's a multi-valued attribute:
+
+id_soup.p.get_attribute_list('id')
+# ["my id"]
+
+If you parse a document as XML, there are no multi-valued attributes:
+
+xml_sou = BeautifulSoup('<p class="body strikeout"></p>', 'xml')
+xml_soup.p['class']
+# u'body strikeout'
+
+Again, you can configure this using the multi_valued_attributes argument:
+class_is_multi = {'*':'class'}
+xml_soup = BeautifulSoup('<p class="body strikeout"></p>', 'xml', multi_valued_attributes=class_is_multi)
+xml_soup.p['class']
+# [u'body', u'strikeout']
+
+You probably won't need to do this, but if you do, use the defaults as a guide. They implement the rules described in the
+HTML specification:
+
+from bs4.builder import builder_registry
+builder_registry.lookup('html').DEFAULT_CDATA_LIST_ATTRIBUTES
+
+NavigableString
+A string corresponds to a bit of text within a tag. BeautifulSoup uses the NavigabkeString class to contain these bits
+of text:
+tag.string
+# u'Extremely bold'
+
+type(tag.string)
+# <class 'bs4.element.NavigableString'>
+
+A NavigableString is just like a Python Unicode string, except that it also supports some of the features described
+in Navigating the tree and Searching the tree. You can convert a NavigableString to a Unicode string with unicode()
+
+unicode_string = unicode(tag.string)
+unicode_string
+# u'Extremely bold'
+type(unicode_string)
+# <type 'unicode'>
+
+You can't edit a string in place, but you can replace on estring with another, using replace_with():
+
+tag.string.replace_with("No longer bold")
+tag
+# <blockquote>No longer bold</blockquote>
+
+NavigableString supports most of the features described in Navigating the tree and Searching the tree, but not all of them. 
+In particular, since a string can't contain anything (the way a tag may caontin a string or another tag), strings don't
+support the .contents or .string attributes, or the find() method.
+
+If you want to use a NavigableSting outside of BeautifulSoup, you should cal unicode() on it to turn it into a normal
+Python Unicode string. If you don't,  your string will carry around a reference to the entire Beautiful Soup parse tree,
+even when you're done using BeautifulSoup. This is a big waste of memory.
+
+Beautiful Soup
+
+The Beautiful Soup object represents the parsed document as a whole. For most purposes, you can treat it as a Tag object. This means
+it supports most of the methods described in Navigating the tree and Searching the tree.
+
+You can also pass a BEautifulSoup object into one of the methods defined in Modifying the tree, just as you would a Tag.
+This lets you to dings like combine two parsed documents:
+
+doc = BEautifulSoup("<document><content/>INSERT FOOTER HERE</document>", "xml")
+footer = BEautifulSoup("<footer>Here's the footer</footer>", "xml")
+doc.find(text="INSERT FOOTER HERE").replace_with(footer)
+# u"INSERT FOOTER"
