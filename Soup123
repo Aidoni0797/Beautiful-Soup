@@ -207,3 +207,18 @@ Declaration, and Doctype. Just like Comment, these classes are subclasses of Nav
 string. Here's an example that replaces the comment with a CDATA block:
 
 from bs4 import CData
+cdata = CData("A CDATA block")
+comment.replace_with(cdata)
+
+print(soup.b.prettyfy())
+# <b>
+# <![CDATA[A CDATA block]]>
+# </b>
+
+Navigating the tree
+Here's the "Three sisters" HTML document again:
+html_doc = """
+<html><head><title>The Dormouse's story</title></head>
+<body>
+<p class="title"><b>The Dormouse's story
+"""
