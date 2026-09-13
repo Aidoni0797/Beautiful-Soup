@@ -31,4 +31,23 @@ markup = '<a href="http://example.com/">I linked to <i>example.com</i></a>'
 soup = Beautifulsoup(markup)
 
 tag = soup.a
-tag.string = ""
+tag.string = "New link text."
+tag
+# <a href="http://example.com/">New link text.</a>
+
+Be careful: if the tag caontained other tags, they and all their contents will be destroyed.
+
+append()
+You can add to a tag's contents with Tag.append(). It works just like calling .append() on a Python list:
+
+soup = BeautifulSoup("<a>Foo</a>")
+soup.a.append("Bar")
+
+soup
+#<html><head></head><body><a>FooBar</a></body></html>
+
+soup.a.contents
+# [u'Foo', u'Bar']
+
+extend()
+Starting in BeautifulSoup 4.7.0, Tag also 
