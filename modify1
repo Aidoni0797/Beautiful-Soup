@@ -99,3 +99,5 @@ The insert_after() method inserts tags or strings immediately following somethin
 div = soup.new_tag('div')
 div.string = 'ever'
 soup.b.i.insert_after(" you ", div)
+soup.b
+# <b><i>Don't</i>you<div>ever</div>stop</b>
