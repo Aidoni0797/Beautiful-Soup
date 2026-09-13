@@ -50,4 +50,4 @@ soup.a.contents
 # [u'Foo', u'Bar']
 
 extend()
-Starting in BeautifulSoup 4.7.0, Tag also 
+Starting in BeautifulSoup 4.7.0, Tag also supports a method called .extend(), which works just like calling .extend() on a Python
