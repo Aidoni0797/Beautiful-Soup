@@ -50,4 +50,52 @@ soup.a.contents
 # [u'Foo', u'Bar']
 
 extend()
-Starting in BeautifulSoup 4.7.0, Tag also supports a method called .extend(), which works just like calling .extend() on a Python
+Starting in BeautifulSoup 4.7.0, Tag also supports a method called .extend(), which works just like calling .extend() 
+on a Python list:
+soup = BeautifulSoup("<a>Soup"</a>)
+soup.a.extend(["'s", " ", "on"])
+soup
+# <html><head></head><body><a>Soup's on</a></body></html>
+soup.a.contents
+#[u'Soup',u''s',u'',u'on']
+
+NavigableString() and .new_tag()
+If you need to add a string o a document, no problem - you can pass a Python string in to append() or you can call the 
+NavigableString constructor:
+
+soup = BeautifulSoup("<b></b>")
+tag = soup.b
+tag.append("Hello")
+new_string = NavigableString(" there")
+tag.append(new_string)
+tag
+#<b>Hello there<!--Noce to see you.---></b>
+tag.contents
+#[u'Hello', u' there', u'Nice to see you']
+
+(This is a new feature in Beautiful Soup 4.4.0)
+
+What if you need to create a whole new tag? The best solution is to call the factory method BeautifulSoup.new_tag():
+soup = BeautifulSoup("<b></b>")
+tag = soup.a
+
+tag.insert(1, "but did not endorse ")
+tag
+# <a href="http://example.com/">I linked to but did not endorse <i>example.com</i></a>
+tag.contents
+# [u'I linked to ', u'but did not endorse', <i>example.com</i>]
+
+insert_before() and insert_after()
+
+The insert_before() method inserts tags or strings immediately before something else in the parse tree:
+soup = BeautifulSoup("<b>stop</b>")
+tag = soup.new_tag("i")
+tag.string = "Don't"
+soup.b.string.insert_before(tag)
+soup.b
+# <b><i>Don't</i>stop</b>
+
+The insert_after() method inserts tags or strings immediately following something else in the parse tree:
+div = soup.new_tag('div')
+div.string = 'ever'
+soup.b.i.insert_after(" you ", div)
