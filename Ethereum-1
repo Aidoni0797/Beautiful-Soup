@@ -8,4 +8,32 @@ issue or a pill request. The editing guide walks through how.
 
 Pick a starting point
 
-Readers aerive with different goals
+Readers aerive with different goals, and the fastest path through these docs depends on what you want to build. A few common
+entry points:
+- Building a dapp that talks to Ethereum. Start with the technical intro, then work through accounts and transactions. Pick a
+framework when you're ready to write code.
+
+- Writing a smart contract. Skim the intro if EVM concepts are new, then jump to smart contracts and a programming language.
+
+- Running a node or staking. Go to nodes and clients, then networking and consensus mechanisms.
+
+- Understanding the protocol from the bottom up. The modules below are ordered for this. Read them in sequence.
+
+Development modules
+
+If this is your first attempt at Ethereum development, we recommend starting at the beginning and working your way through
+like a book.
+
+Foundational topics
+
+Intro to Ethereum - 
+
+What is a blockchain?
+
+A blockchain is a public database that is updated and shared across many computers in a network.
+
+Block refers to data and state being stored in consecutive groups known as blocks. If you send ETH to someone else,
+the transaction data needs to be added to a block to be successful.
+
+Chain refers to the fact that each block cryptographically references its parent. In other words, blocks get chained together.
+The data in a block cannot change without 
