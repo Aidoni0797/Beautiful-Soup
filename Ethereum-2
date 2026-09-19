@@ -65,4 +65,6 @@ Wei is the smallest possible amount of ether, and as a result, many technical im
 will base all calculations in Wei.
 
 Transferring ether
+Each transaction on Ethereum contains a value field, which specifies the amount of 
+https://ethereum.org/developers/docs/intro-to-ethereum/
 
