@@ -46,4 +46,19 @@ need a consensus mechanism.
 Ethereum uses a proof-of-stake-based consensus mechanism. Anyone who wants to add new blocks to the chain must stake ETH - 
 the native currency in Ethereum - as collateral and run validator software. These validators can then be randomly selected
 to propose blocks that other validators check and add to othe blockchai. There is a system of rewards and participants to be
-honest and available online as much as possible
+honest and available online as much as possible.
+
+If you would like to see how blockchain data is hashed and subsequently appended to the history of block references, be sure
+to check out this demo by Anders Brownworth and watch the accompanying video below.
+
+Watch Anders explain hashes in blockchains:
+
+What is Ethereum?
+
+Ethereum is a blockchain with a computer embedded in it. It is the foundation for building apps and organizations in a
+deventralized, permissionless, censorship-resistant way.
+
+In the Ethereum universe, there is a single, canonical computer (called the Ethereum Virtual MAchine, or EVM) whose state
+everyone on the Ethereum network agress on. Everyone who participates in the Ethereum network (every Ethereum node)
+keeps a copy of the state of this computer. Additinally, any participant can broadcast a request for this computer
+to perform arbitrary computation
