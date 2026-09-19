@@ -1,0 +1,41 @@
+Prerequisites
+To help you better understand this page, we recommend you first read Introduction to Ethereum
+
+What is cryptocurrency?
+
+A cryptocurrency is a medium of exchange secured by a blockchain-based ledger
+
+A meduim of exchange is anything widely accepted as payment for goods and services, and a ledger is a data store that keep
+track of transactions. Blockchain technology allows users to make transactions on the ledger without reliance upon a trusted
+third party to maintain the ledger.
+
+The first cryptocurrency was Bitcoin, created by Satoshi Nakamoto. Since Bitcoin's release in 2009, people have made thousands
+of cryptocurrencies across many different blockchains.
+
+What is ether?
+Ether (ETH) is the cryptocurrency used for many things, on the Ethereum network. Fundementally, it is the only acceptable
+form of payment tor transaction fees, and after The Merge, ether is required to validate and propose blocks on Mannet.
+Ether is also used as a primary form of collateral in the DeFi lending markets, as a unit of account in NFT marketplaces, as payment
+earned for performing services or selling real-world goods, and more.
+
+Ethereum allows developers to create decentralized applications (dapps), which all share a pool of computing power. This shared
+pool is finite, so Ethereum needs a mechanism to determine who gets to use it. Otherwise, a dapp could accidentally or maliciously 
+consume all network resources, which would block others from accessing it.
+
+The ether cryptocurrency supports a pricing mechanism for Ethereum's computing power. When users want to make a transaction,
+they must pay ether to have their transaction recognized on the blockchain. These usage costs are known as gas fees, and the
+gas fee depends on the amount of computing power required to execute the transaction and  the network-wide demand for 
+computing power at the time.
+
+Therefore, even if a malicious dapp submitted an infinite loop, the transaction would eventually run out of ether and terminate,
+allowing the network to return to normal.
+
+It is common to conflate Etehreum and ether - when people reference the price of Ethereum, they are describing the price of ether.
+
+Minting ether
+Minting is the process in which new ether gets created on the Etehreum ledger. The underlying Etehreum protocol creates the new
+ether, and it is not possible for a user to create  ether.
+
+Ether is minted as a reward for each block proposed and at every epoch checkpoint for other validator activity related to
+reaching consensus. The total amount issued depends on the number of validators and how much ether they have staked. This
+total issuance is divided equally among validators in the ideal case that all validators are honest and 
