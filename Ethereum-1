@@ -61,4 +61,31 @@ deventralized, permissionless, censorship-resistant way.
 In the Ethereum universe, there is a single, canonical computer (called the Ethereum Virtual MAchine, or EVM) whose state
 everyone on the Ethereum network agress on. Everyone who participates in the Ethereum network (every Ethereum node)
 keeps a copy of the state of this computer. Additinally, any participant can broadcast a request for this computer
-to perform arbitrary computation
+to perform arbitrary computation. Wherenever such a request is broadcast, other participants on the network verify,
+validate, and carry out ("execute") the computation. This execution causes a state change in the EVM, which is committed 
+and propagated throughout the entire network.
+
+Requests for computation are called transaction requests; the record of all transactions and the EVM's present state gets
+stored on the blockchain, which in turn is stored and agreed upon by all nodes.
+
+Cryptographic mechanisms ensure  that once transactions are verified as valid and added to the blockchain, they can't be
+tempered with later. The same mechanisms also ensure that all transactions are signed and executed with appropriate
+permissions (no one should be able to send digital assets from Slice's account, except for Alice herself).
+
+What is ether?
+Ether (ETH) is the native cryptocurrency of Ethereum. The propose of ETH is to allow for a market for computation. Such a
+market provides an economic incentive for participants to verify and execute transaction requests and provide 
+compuational resources to the network.
+
+Any participant who broadcasts a transaction request must also offer some amount of ETH to the network as a bounty.
+The network will burn part of the bounty and award the rest to whoever eventually does the work of verifying the transaction,
+ecevuting it, committing it to the blockchain, and broadcasting it to the network.
+
+The amount of ETH paid corresponds to the resources required to do the computation. These bounties also prevent malicious
+participants from intentionally clogging the network by requesting the execution of infinite computation 
+or other resouce-intensive scripts, as these participants must pay for computation resources.
+
+ETH is also used to provide crypto-economic security to the netwotk in three main ways:
+1) it is used as a means to reward validators who propose blocks or call out dishonest behaviour by other validators;
+2) It is staked by validators, acting as collateral against dishonest behaviour - if validators attempt to
+mesbehave their ETH can be destroyed; 3) It it used weigh votes for newly proposed blocks
