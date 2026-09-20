@@ -44,4 +44,7 @@ is distributed across the other validators; Block proposes also receive tips fro
 come from recycled ether, not new issuance
 
 Burning ether
-As well as creating wther through block rewards, ether can be destroyed 
+As well as creating wther through block rewards, ether can be destroyed through a process called 'burning'. When ether gets burned
+it gets removed from circulation permanently.
+
+Ether burn occurs in every transaction on Ethereum. When users pay for their transactions, a base gas fee, set by the network
