@@ -14,4 +14,12 @@ of cryptocurrencies across many different blockchains.
 What is ether?
 
 Ether (ETH) is the cryptocurrency used for many things on the Ethereum network. Fundementally, it is the only acceptable form
-of
+of payment for transaction fees, and after The Merge, ether is required to validate and propose blocks on Mainnet. Ether is also
+used as a primary form of collateral in the DeFi lending markets, as a unit of account in NFT marketplaces, as payment earned
+for performing services or selling real-world goods, and more.
+
+Ethereum allows developers to create decentralized applications (dapps), which all share a pool of computing power. This shared
+pool is finite, so Ethereum needs a mechanism to determine who gets to use it. Otherwise, a dapp could accidentally or maliciously
+consume all network resources, which would block others from accessing it.
+
+The ether cryptocurrency supports a pricing mechnism for Ethereun's
