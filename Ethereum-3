@@ -72,4 +72,6 @@ to send from the sender's address to the recepient address.
 When the recepient address is a smart contract, this transferred ether may be used to pay for gas when the smart contract
 executes its code.
 
-Querying 
+Querying ether
+Users can query the ether balance of any account by inspecting the account's balance field, which shows ether holdings
+demoniated
