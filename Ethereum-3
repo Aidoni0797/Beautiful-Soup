@@ -53,4 +53,13 @@ estimation on Ethereum. When network demand is high, burn more ether than they m
 
 Burning the base fee hinders a block producer's ability to manipulate transactions. For example, if block producers
 received the base fee, they could include  their own transactions for fee and raise the base fee for everyone else.
-Alternatively, they could refund the base fee to some users offchain, leading to a more opaque and complex 
+Alternatively, they could refund the base fee to some users offchain, leading to a more opaque and complex transaction fee market.
+
+Denominations of ether
+Since the value of many transactionson Etehreum are small, ether has several denomitations, Wei and gwei are particularly 
+important.
+
+Wei is the smallest possible amount of ether, and as a result, many technical implementations, such as the Etehreum Yellowpaper
+will base all calculations in Wei.
+
+Gwei short forgiga-
