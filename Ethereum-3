@@ -62,4 +62,14 @@ important.
 Wei is the smallest possible amount of ether, and as a result, many technical implementations, such as the Etehreum Yellowpaper
 will base all calculations in Wei.
 
-Gwei short forgiga-
+Gwei short for giga-wei, is often used to describe gas costs on Ethereum
+
+Transferring ether
+
+Each transaction on Ethereum contains a value field, which specifies the amount of ether to be transferred, denominated in wei,
+to send from the sender's address to the recepient address.
+
+When the recepient address is a smart contract, this transferred ether may be used to pay for gas when the smart contract
+executes its code.
+
+Querying 
