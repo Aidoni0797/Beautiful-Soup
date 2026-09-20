@@ -36,4 +36,5 @@ Minting ether
 Minting is the process in whicj new ether gets  created on the Ethereum ledger. The underlying Ethereum protocol creates the new
 ether, and it is not possible for a user to create ether.
 
-Ether is minted as a reward for each block proposed and 
+Ether is minted as a reward for each block proposed and at every epoch checkpoint for other validator activity
+related to reaching consensus
