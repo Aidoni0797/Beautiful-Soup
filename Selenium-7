@@ -43,3 +43,5 @@ find_element(By.CSS_SELECTOR, "css selector")
 If you want to locate several elements with the same attribute replace find_element with find_elements.
 
 4.1. Locating by Id
+
+Use this when you know 
