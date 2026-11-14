@@ -92,5 +92,7 @@ polling2 Library
 
 You may also consider using polling2 library which you need to install separately
 
-5.2. 
+5.2. Implicit Waits
+
+An implicit wait tells
     
