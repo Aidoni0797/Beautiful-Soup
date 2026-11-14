@@ -83,4 +83,17 @@ class BasePageElement(object):
     driver = obj.driver
     WebDriverWait(driver, 100).until(
       lambda driver: driver.find_element(By.NAME, self.locator))
-    
+    return element.get_attribute("value")
+
+
+
+6.4. Locators 
+
+One of the practices is to separatethe locator strings from the place where they are getting used. In this example, locators
+of the same page belong to the same class.
+
+The locators.py will look like this:
+from selenium.webdriver.common.by import By
+
+class MainPageLocators(object):
+  
