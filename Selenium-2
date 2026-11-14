@@ -1,0 +1,81 @@
+Selenium-2
+
+7. WebDriver API
+
+Note:
+This is not an official documentation. Official API documentation is available here.
+
+This chapter covers all the interfaces of Selenium WebDriver.
+
+Recommended Import Style
+
+The API definitions in this chapter show the absolute location of classes. However, the recommended import style is as
+given below|:
+
+from selenium import webdriver
+
+Then, ypu can access the classes like this:
+webdriver.Firefox
+webdriver.FirefoxProfile
+webdriver.FirefoxOptions
+webdriver.FirefoxService
+webdriver.Chrome
+webdriver.ChromeOptions
+webdriver.ChromeService
+webdriver.Ie
+webdriver.IeOptions
+webdriver.IeService
+webdriver.Edge
+webdriver.ChromiumEdge
+webdriver.EdgeOptions
+webdriver.EdgeService
+webdriver.Safari
+webdriver.SafariOptions
+webdriver.SafariService
+webdriver.WebKitGTK
+webdriver.WebKitGTKOptions
+webdriver.WebKitGTKService
+webdriver.WPEWebKit
+webdriver.WPEWebKitOptions
+webdriver.WPEWebKitService
+webdriver.Remote
+webdriver.DesiredCapabilities
+webdriver.ActionChains
+webdriver.Proxy
+webdriver.Keys
+
+The special key class (Keys) can be imported like this:
+
+from selenium.webdriver.common.keys import Keys
+
+The exception classes can be imported like this (Replace the TheNameOfTheExceptionClass with the actual class name given 
+below):
+
+from selenium.common.exceptions import [TheNameOfTheExceptionClass]
+
+Conventions used in the API
+
+Some attributes are callable (or methods) and others are non-callable (properties). All the callable attributes are ending 
+with round brackets.
+
+Here is an example for property:
+
+- current_url
+URL of the currently loaded page
+Usage:
+driver.current_url
+
+Here is an example of a method:
+- close()
+Closes the current window
+Usage:
+driver.close()
+
+7.1. Exceptions
+Exceptions that may happen in all the webdriver code
+
+exception selenium.common.exceptions.ElementClickInterceptedException(msg:str|None=None, screen: str|None=None, stacktrace: 
+Sequence[str]|None=None)
+Bases:WebDriverException
+
+The Element Click 
