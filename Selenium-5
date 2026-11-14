@@ -29,4 +29,7 @@ def setUp(self):
 
 def test_search_in_python_org(self):
   main_page=page.MainPAge(self.driver)
-  self.assertTrue(main_page.is_title_matches(), "pythhin")
+  self.assertTrue(main_page.is_title_matches(), "python.org title doesn't match.")
+  main_page.search_text_element = "pycon"
+  main_page.click_go_button()
+  search_result_page = page.SearchResultPage
