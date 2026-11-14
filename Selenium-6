@@ -40,4 +40,5 @@ if fails to locate an element.
 
 Expected Conditions
 
-There are some common conditions that are 
+There are some common conditions that are frequently of use when automating web browsers. Listed below are the names of each.
+Selenium Python binding provides
