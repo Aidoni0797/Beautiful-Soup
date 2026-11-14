@@ -71,11 +71,12 @@ Closes the current window
 Usage:
 driver.close()
 
-7.1. Exceptions
-Exceptions that may happen in all the webdriver code
+7.2. Action Chains
+The ActionChains implementation
 
-exception selenium.common.exceptions.ElementClickInterceptedException(msg:str|None=None, screen: str|None=None, stacktrace: 
-Sequence[str]|None=None)
-Bases:WebDriverException
+class selenium.webdriver.common.action_chains.ActionChains(driver:WebDriver, duration: int=250,devices: list[AnyDevice]|None=None)
 
-The Element Click 
+Bases: object
+
+ActionChains are a way to automate low level interactions such as mouse movements, mouse button actions, key press, and context
+menu interactions. This is useful for doing more complex actions like hover
