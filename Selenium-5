@@ -42,4 +42,31 @@ if __name__ == "__main__":
   unittest.main()
 
 6.2. Page objest classes
-The page object pattern intends to create an object for each part of a web page. This technique helps 
+The page object pattern intends to create an object for each part of a web page. This technique helps build a separation
+between the test code and the actual code that interacts with the web page.
+
+The page.py will look like this:
+
+from element import BasePAgeElement
+from locators import MainPageLocators
+
+class SearchText\element(BasePageElement):
+  locator='q'
+
+class BasePage(object):
+  def __init__(self, driver):
+    self.driver = driver
+
+class MainPage(BasePage):
+  search_text_element = SearchTextElement()
+
+  def is_title_matches(self):
+    return "Python" in self.driver.title
+
+  def click_go_button(self):
+    element = self.driver.find_element(*MainPageLocators.GO_BUTTON)
+    element.click()
+
+class SearchResultsPage(BasePage):
+  def is_results_found(self):
+    return "No results found"
