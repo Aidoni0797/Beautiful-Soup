@@ -1,3 +1,72 @@
 Selenium-1
 
 8. Appendix: Frequently Asked Questions
+
+8.1. How to use ChromeDriver?
+
+Download the latest chromedriver from download page. Unzip th file
+
+
+unzip chromedriver_linux64.zip
+
+You should see a chromedriver executable. Now you can create an instance of Chrome WebDriver like this:
+
+driver = webdriver.Chrome(executable_path-"/path/to/chromedriver")
+
+The rest of the example should work as given in other documentation.
+
+8.2. Does Selenium 2 support XPath 2.0?
+
+Fer: http://seleniumhq.org/docs/03_wendriver.html#how-xpath-works-in-webdriver
+
+Selenium delegates XPath queries down to the browser's own XPath engine, so Selenium support XPath supports whatever the browser
+supports. In browsers which don't have native XPath engines, Selenium supports XPath 1.0 only.
+
+8.3. How to scroll down to the bottom of a page?
+
+Ref: http://blog.varunin.com/2011/08/scrollimmg-on-pages-using-selenium.html
+
+You can use the execute_script method to execute javascript on the loaded page. So, you can call the JavaScript API to scroll
+to the bottom or any other position of a page.
+
+Here is an example to scroll to the bottom of a page:
+
+driver.execute_script("window.scrollTo(0, document.body.scrollHeight);")
+
+The window object in DOM has a scrollTo method to scroll to any position of an opened window. The scrollHeight is a common
+property for all elements. The document.body.scrollHeight will give the height of the entire body of the page.
+
+8.4. How to auto save files using custom Firefox profile?
+
+Ref: http://stackoverflow.com/quections/1176348/access-to-file-download-dialog-in-firefox
+Ref: http://blog.condecentric.de/en/2010/07/file-downloads-with-selenium-mission-impossible/
+
+The first step is to identify the type of file you want to auto save.
+
+To identify the content type you want to download automatically, you can use curl:
+
+curl -I URL | grep "Content-Type"
+
+another way to find content type is using the requests module, you can use it like this:
+
+import requests
+content_type = requests.head('http://www.python.org').headers['content-type']
+pritn(content_type)
+
+Once the content type is identified, you can use it to set the firefox profile preference:
+browser.helperApps.neverAsk.saveToDisk
+
+Here is an example:
+
+import os
+
+from selenium import webdriver
+
+fp = webdriver.FirefoxProfile()
+
+fp.set_preference("browser.download.folderList",2)
+fp.set_preference("browser.download.manager.showEhenStarting", False)
+fp.set_preference("browser.download.dir", os.getcwd())
+fp.set_preference("browser.helperApps.neverAsl.saveToDisk", "application/octet-stream")
+
+browser = webdriver.Firefox()
