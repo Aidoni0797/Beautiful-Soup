@@ -95,3 +95,21 @@ locating the third checkbox on the page.
 
 One of the main reasons for using XPath is when you don't have a suitable id or name attribute for the element you wish 
 to locate. You can use XPath to either locate the element in absolute terms (not advised), or relative to an element
+that does have an id or name attribute. XPath locators can also be used to specify elements via attributes other than id
+and name.
+
+Absolute XPaths contain the location  of all elements from the root (html) and as a result are likely to fail with only
+the slightest adjustment  to the application. By finding a nearby element with an id or name attribute (ideally a parent
+element) you can locate your target element based on the relationship. This is much less likely to change and can make 
+your tests more robust.
+
+For instance, consider this page source:
+
+<html>
+<body>
+<form id="loginForm">
+<input name="username" type="text"/>
+</form>
+</body>
+</html>
+
