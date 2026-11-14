@@ -30,4 +30,33 @@ ef_driver = EventFiringWebDriver(driver, MyListener())
 ef_driver.get("http://www.google.co.in/")
 
 back()->None
-close()->
+close()->None
+execute_async_script(script, *args)
+execute_script(script, *args)
+find_element(by="id", value=None)
+find_elements(by="id", value=None)
+forward()-None
+get(url:str)
+quit()-None
+
+property wrapped_driver: WebDriver
+Returns the WebDriver instance wrapped by this EventsFiringWebDriver
+
+class
+selenium.webdriver.support.event_firing_webdriver.EventFiringWebElement(webelement: WebElement, ef_driver: EventFiringWebDriver)
+Bases:object
+
+A wrapper around WebElement instance which supports firing events
+__init__(webelement: WebElement. ef_driver: EventFiringWebDriver)-None
+Creates a new instance of the EventFiringWebElement
+
+clear()-None
+click()-None
+find_element(by='id', value=None)
+find_elements(by='id', value=None)
+send_keys(*value)-None
+
+property wrapped_element: WebElement
+Returns the WebElement wrapped by this EventFiringWebElement instance.
+
+
