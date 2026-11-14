@@ -69,4 +69,37 @@ fp.set_preference("browser.download.manager.showEhenStarting", False)
 fp.set_preference("browser.download.dir", os.getcwd())
 fp.set_preference("browser.helperApps.neverAsl.saveToDisk", "application/octet-stream")
 
-browser = webdriver.Firefox()
+browser = webdriver.Firefox(firefox_profile=fp)
+browser.get("http://pypi.python.org/pypi/selenium")
+browser.feind_element_by_partial_link_text("selenium-2").click()
+
+In the above example, application/octet-stream is used as the content type
+
+The browser.download.dir option specify the directory where you want to download the files.
+
+8.5. How to upload files into file inputs?
+Select the <input type="file"> element and call the send_keys() method passing the file path, either the path relative
+to the test script, or an absolute path. Leep in mind the differences in path names between Windows and Unix systems.
+
+8.6. How to use firebug with Firefox?
+
+First download the Firebug XPI file, later you call the add_extension method available for the firefox profile:
+
+from selenium import webdriver
+
+fp = webdriver.FirefoxProfile()
+
+fp.add_extension(extension="firebug-1.8.4.xpi")
+fp.set_preference("extensions.firebug.currentVersion", "1.8.4") # Avoid startup screen
+browser = webdriver.Firefox(firefox_profile=fp)
+
+8.7. How to take screenshot of the current window?
+
+Use the save_screenshot method provided by the webdriver:
+
+from selenium import webdriver
+
+driver = webdriver.Firefox()
+driver.get('http://www.python.org')
+driver.save_screenshot('screenshot.png')
+driver.quit()
