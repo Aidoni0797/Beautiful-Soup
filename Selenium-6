@@ -15,3 +15,29 @@ of time when trying to locate an element.
 
 An explicit wait is a code you define to wait for a certain condition to occur before proceeding further in the code. The extreme
 case of this is time.sleep(), which sets the condition to an exact time period to wait. There are some convenience methods
+provided that help you write code that will wait only as long as required. WebDriverWait in combination with ExpectedCondition
+is one way this can be accomplished.
+
+from selenium import webdriver
+from selenium.webdriver.common.by import By
+from selenium.webdriver.support.wait import WebDriverWait
+from selenium.webdriver.support import expected_conditions as EC
+
+driver = webdriver.Firefox()
+driver.get("http://somedomain/url_that_delays_loading")
+
+try: 
+  element = WebDriverWait(driver, 10).until(
+    EC.presence_of_element_located((By.ID, "myDynamicElement"))
+  )
+finally:
+  driver.quit()
+
+In the code above, Selenium will wait for a maximum of 10 seconds for an element matching the given criteria to be found.
+If no element is found in that time, a TimeoutExceptionn is thrown. By default, WebDriverWait calls the ExpectedCondition
+every 500 milliseconds until it returns success. ExpectedCondition will return (Boolean) in case of success or not null
+if fails to locate an element.
+
+Expected Conditions
+
+There are some common conditions that are 
