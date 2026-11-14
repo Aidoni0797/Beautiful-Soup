@@ -32,4 +32,14 @@ def test_search_in_python_org(self):
   self.assertTrue(main_page.is_title_matches(), "python.org title doesn't match.")
   main_page.search_text_element = "pycon"
   main_page.click_go_button()
-  search_result_page = page.SearchResultPage
+  search_result_page = page.SearchResultPage(self.driver)
+  self.assertTrue(search_results_page.is_results_found(), "No results found.")
+
+def tearDown(self):
+  self.driver.close()
+
+if __name__ == "__main__":
+  unittest.main()
+
+6.2. Page objest classes
+The page object pattern intends to create an object for each part of a web page. This technique helps 
