@@ -69,4 +69,18 @@ class MainPage(BasePage):
 
 class SearchResultsPage(BasePage):
   def is_results_found(self):
-    return "No results found"
+    return "No results found." not in self.driver.page_source
+
+6.3. Page elements
+
+The element.py will look like this:
+
+from selenium.webdriver.common.by import By
+from selenium.webdriver.support.ui import WebDriverWait
+
+class BasePageElement(object):
+  def __set__(self, obj, value):
+    driver = obj.driver
+    WebDriverWait(driver, 100).until(
+      lambda driver: driver.find_element(By.NAME, self.locator))
+    
