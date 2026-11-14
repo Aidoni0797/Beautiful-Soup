@@ -125,4 +125,21 @@ Args: - on_element: The element to mouse down. If None, clicks on current mouse 
 
 context_click(on_element: WebElement| None=None)->ActionChains
 
-Performs a context-click(right click)
+Performs a context-click(right click) on an element.
+
+Args: - on_elemen: The element to context-click. If None, clicks on current mouse position.
+
+double_click(on_element: WebElement | None = None)->ActionChains
+
+Double-clicks an element
+
+Args: - on_element: The element to double-click. If None, clicks on current mouse position.
+
+drag_and_drop(source: WebElement, target: WebElement)->ActionChains
+
+Holds down the left mouse button on the source element, then moves to the target element and releases the mouse button.
+
+Args: - source: The element to mouse down.
+- target: The element to mouse up.
+
+drag_and_drop_by
