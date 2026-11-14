@@ -83,4 +83,9 @@ menu interactions. This is useful for doing more complex actions like hover over
 
 Generate user actions.
 
-When 
+When you call methods for actions on the ActionChains object, the actions are stored in a queue in the ActhinChains object.
+When you call perform(), the events are fired in the order they are queued up.
+
+ActionChains can be used in a chain pattern:
+
+menu = drivre.fin
