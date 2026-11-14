@@ -76,4 +76,13 @@ driver = webdriver.Remote(desired_capabilities=capabilities, command_executor=se
 Note: Always use '.copy()' on the DesiredCapabilities object to avoid the side effects of altering the Global class instance.
 
 CHROME = {'browserName': 'chrome'}
-EDGE = {'browser'}
+EDGE = {'browserName': 'MicrosoftEdge'}
+FIREFOX = {'acceptInsecureCerts': True, 'browserName': 'firefox', 'moz:debuggerAddress': True}
+HTMLUNIT = {'browserName': 'htmlunit', 'platform': 'ANY', 'version': ''}
+HTMLUNITWITHJS = {'browserName': 'htmlunit', 'javascriptEnabled': True, 'platform': 'ANY', 'version': 'firefox'}
+INTERNETEXPLORER = {'browserName': 'internet explorer', 'platformName': 'windows'}
+IPAD = {'browserName': 'iPad', 'platform': 'mac', 'version': ''}
+IPHONE = {'browserName': 'iPhone', 'platform': 'mac', 'version': ''}
+SAFARI = {'browserName': 'safari', 'platformName': 'mac'}
+WEBKITGTK = {'browserName': 'MiniBrowser'}
+WPEWEBKIT = {'browserName': 'MiniBrowser'}
