@@ -79,4 +79,8 @@ class selenium.webdriver.common.action_chains.ActionChains(driver:WebDriver, dur
 Bases: object
 
 ActionChains are a way to automate low level interactions such as mouse movements, mouse button actions, key press, and context
-menu interactions. This is useful for doing more complex actions like hover
+menu interactions. This is useful for doing more complex actions like hover over ad drag and drop.
+
+Generate user actions.
+
+When 
