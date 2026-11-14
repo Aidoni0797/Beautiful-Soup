@@ -1,0 +1,32 @@
+Selenium-5
+
+6. Page Objects
+
+This chapter is a tutorial introduction to the Page Objects design pattern. A page object represents an area where the test
+interacts within the web application user interface.
+
+Benefits of using page object pattern:
+- Easy to read test cases
+- Creating reusable code that cah share across multiple test cases
+- Reducing the amount of duplicated code
+- If the user interface changes, the fix needs changes in only one place
+
+6.1. Test case
+
+HEre is a test case that searches for a word on the python.org website and ensures some results. The following section will
+introduce the page module where the page objects will be defined
+
+import unittest
+from selenium import webdriver
+import page
+
+class PythonOrgSearch(unittest.TestCase):
+"""A sample test class to show how page object works"""
+
+def setUp(self):
+  self.driver = webdriver.Firefox()
+  self.driver.get("http://www.python.org")
+
+def test_search_in_python_org(self):
+  main_page=page.MainPAge(self.driver)
+  self.assertTrue(main_page.is_title_matches(), "pythhin")
