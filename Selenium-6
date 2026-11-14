@@ -94,5 +94,5 @@ You may also consider using polling2 library which you need to install separatel
 
 5.2. Implicit Waits
 
-An implicit wait tells
+An implicit wait tells WebDriver to poll the DOM for a certain amount of time when trying to find
     
