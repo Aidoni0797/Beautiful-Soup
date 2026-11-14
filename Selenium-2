@@ -88,4 +88,16 @@ When you call perform(), the events are fired in the order they are queued up.
 
 ActionChains can be used in a chain pattern:
 
-menu = drivre.find_element(By.CSS_SELECTOR, "")
+menu = drivre.find_element(By.CSS_SELECTOR, ".nav")
+hidden_submenu = driver.find_element(By.CSS_SELECTOR, ".nav #submenu1")
+
+ActionChains(driver).move_to_element(menu).click(hidden_submenu).perform()
+
+Or actions can be queued up one by one, then performed:
+
+menu = driver.find_element(By.CSS_SELECTOR, ".nav")
+hidden_submenu = driver.find_element(By.CSS_SELECTOR, ".nav #submenu1")
+
+actions = ActionChains(driver)
+actions.move_to_element(menu)
+actions.click(hidden_submenu)
