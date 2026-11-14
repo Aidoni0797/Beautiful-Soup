@@ -86,4 +86,11 @@ class element_has_css_class(object):
 
 wait = WebDriverWait(driver, 10)
 element = wait.until(element_has_css_class((By.ID, 'myNewInput'), "myCSSClass"))
+
+Note:
+polling2 Library
+
+You may also consider using polling2 library which you need to install separately
+
+5.2. 
     
