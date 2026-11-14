@@ -101,3 +101,28 @@ hidden_submenu = driver.find_element(By.CSS_SELECTOR, ".nav #submenu1")
 actions = ActionChains(driver)
 actions.move_to_element(menu)
 actions.click(hidden_submenu)
+actions.perform()
+
+Either way, the actions are performed in the order they are called, one after another.
+
+__init__(driver: WebDriver, duration: int = 250, devices: List[AnyDevice]|None=None) -> None
+
+Creates a new ActionChains
+
+Args: 
+- driver: The WebDriver instance which performs user actions.
+- duration: override the default 250 msecs of DEFAULT_MOVE_DURATION in PointerInput
+
+click(on_element: WebElement|None = None)-> ActionChains
+Clicks an element
+
+Args: - on_element: The element to clic. If None, clicks on current mouse position
+
+click_and_hold(on_element: WebElement|None=None)->ActionChains
+Holds down the left mouse button on an element.
+
+Args: - on_element: The element to mouse down. If None, clicks on current mouse position.
+
+context_click(on_element: WebElement| None=None)->ActionChains
+
+Performs a context-click(right click)
