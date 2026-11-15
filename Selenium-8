@@ -21,4 +21,21 @@ element = driver.find_element(By.NAME, "passwd")
 element = driver.find_element(By.XPATH, "//input[@id='passwd-id']")
 element = driver.find_element(By.CSS_SELECTOR, "input#passwd-id")
 
-You can also look
+You can also look for a link by its text, but be careful! The text must be an exact match! You should also be careful when 
+using XPATH in WebDriver. If there's more than one element that matches the query, then only the first will be returned.
+If nothing can be found, a NoSuchElementException will be raised.
+WebDriver has an "Object-based" API; we represent all types of elements using the same interface. This means that although 
+you may see a lot of possible methods you could invoke when you hit your IDE's auto-complete key combination, not all
+of them will make sense or be valid. Don't worry! WebDriver will attempt to do the Right Thing, and if you call a method 
+that makes no sense ("setSelected()" on a "meta" tag, for example) an exception will be raised. 
+
+So, you've got an element. What can you do with it? First of all, you may want to enter some text into a text field:
+
+element.send_keys("some text")
+
+You can simulate pressing the arrow keys by using the "Keys" class:
+
+element.send_keys(" and some", Keys.ARROW_DOWN)
+
+It is possible to call send_keys on any element, which makes it possible to test keyboard shortcuts such as those used on
+GMail. A side-effect of this is that typing something into a text field won't automotically clear it. Instead, what
