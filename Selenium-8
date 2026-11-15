@@ -49,4 +49,15 @@ the state of the drop down, and you can use "setSelected" to set something like 
 SELECT tags isn't too bad:
 
 element = driver.find_element(By.XPATH, "//select[@name='name']")
-all_options = element.find
+all_options = element.find_elements(By.TAG_NAME, "option")
+for option in all_options:
+  print("Value is %s" % option.get_attribute("value"))
+  option.click()
+
+This will find the first "SELECT" element on the page, and cycle through each of its OPTIONs in turn, printing out their 
+values, and selecting each in turn.
+
+As you can see, this isn't the most efficient way of dealing with SELECT elements. WebDriver's support classes include
+one called a "Select", which provides useful methods for interacting with these:
+
+from selenium.webdriver.support.ui import 
