@@ -147,5 +147,74 @@ W3Schools XPath Tutorial
 W3C XPath Recommendation
 XPath Tutorial - with interactive examples
 
-Here is a cpuple
+Here is a couple of very useful ADD-ons that can assist in discovering the XPath of an element:
+xPath Finder - Plugin to get the elements xPath
+XPath Helper - for Google Chrome
 
+
+4.4. Locating Hyperlinks by link Text
+
+Use this when you know the link text used within an anchor tag. With this strategy, the first element with link text
+matching the provided value will be returned. If no element has a matching link text attribute, a NoSuchElementException will be 
+raised.
+
+For instance, consider this page source:
+<html>
+<body>
+<p> Are you want to do this?</p>
+<a href="continue.html">Continue</a>
+<a href="cancel.html">Cancel</a>
+</body>
+</html>
+
+The continue.html link can be located like this:
+continue_link = driver.find_element(By.LINK_TEXT, 'Continue')
+continue_link = driver.find_element(By.PARTIAL_LINK_TEXT, 'Conti')
+
+4.5. Locating Elements by Tag Name
+Use this whem you want to locate an element by tag name. With this strategy, the first element with the given tag name
+will be returned. If no element has a matching tag name, a NoSuchElementException will be raised.
+
+For instance, cosider this page source:
+<html>
+<body>
+<h1>Welcome</h1>
+<p>Site content goes here.</p>
+</body>
+</html>
+
+The heading (h1) element can be located like this:
+heading1 = driver.find_element(By.TAG_NAME, 'h1')
+
+4.6. Locating Elements by Class Name
+
+Use this when you want to locate an element by class name. With this strategy, the first element with the matching class
+name attribute will be returned. If no element has a matching class name attribute, a NoSuchElementException will be raised:
+
+For instance, consider this page source:
+<html>
+<body>
+<p class="content'>Site content goes here</p>
+</body>
+</html>
+
+The "p" element can be located like this:
+content = driver.find_element(By.CLASS_NAME, 'content')
+
+4.7. Locating Elements by CC Selectors
+
+Use this when you want to locate an element using CSS Selector syntax. With this strategy , the first element matching 
+the given CSS Selector will be returned. If no element matches the provided CSS selector, a NoSuchElementException
+will be raised.
+
+For instance, consider this page source:
+<html>
+<body>
+<p class="content">Site content goes here.</p>
+</body>
+</html>
+
+The "p" element can be located like this:
+content = driver.find_element(By.CSS_SELECTOR, 'p.content')
+
+Sauce Labe has good documentation on CSS selector.
