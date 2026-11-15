@@ -10,4 +10,15 @@ loaded. If you need to ensure such pages are fully loaded then you can use waits
 
 3.1. Interacting with the page
 Just being able to go to places isn't terribly useful. What we'd really like to do is to interact with the pages, or, more
-specifically, the HTML elements  within a page. First of all, we need to find one.  WebDriver offers a numner
+specifically, the HTML elements  within a page. First of all, we need to find one.  WebDriver offers a number of ways to find
+elements. For example, given an element defined as:
+<input type="text" name="passwd" id="passwd-id"/>
+
+you could find it using any of:
+
+element = driver.find_element(By.ID, "passwd-id")
+element = driver.find_element(By.NAME, "passwd")
+element = driver.find_element(By.XPATH, "//input[@id='passwd-id']")
+element = driver.find_element(By.CSS_SELECTOR, "input#passwd-id")
+
+You can also look
