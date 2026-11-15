@@ -61,3 +61,4 @@ As you can see, this isn't the most efficient way of dealing with SELECT element
 one called a "Select", which provides useful methods for interacting with these:
 
 from selenium.webdriver.support.ui import 
+https://selenium-python.readthedocs.io/navigating.html
