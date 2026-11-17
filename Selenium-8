@@ -137,3 +137,41 @@ Once we are done with working on frames, we will have to come back to the parent
 done using:
 
 driver.switch_to.default_content()
+
+3.5. Popup dialogs
+Selenium WebDriver has built-in support for handling popoup dialog boxes. After you've triggered
+action that would open a popup, you can access the alert with the following:
+alert = driver.switch_to.alert
+
+This will return the currently open alert object. With this object, you can now accept, dismiss,
+read its contents or even type into a prompt. This interface works equally well on alerts, 
+confirms, prompts. Refer tp the API documentation for more information.
+
+3.6. Navigation: history and location
+
+Earlier, we covered navigating to a page using the get command
+driver.get("http://ww.example.com")
+As you've seen, WebDriver has a number of smaller, task-focused interfaces, and navigation is a useful
+task. To navigate to a page, you can use get method:
+
+driver.get("http://www.example.com")
+
+To move backward and forward in your browser's history:
+driver.forward()
+driver.back()
+
+Please be aware that this functionality depends entirely on the underlying driver. It's just
+possible that something unexpected may happen when you call these methods if you're used to the
+behaviour of the browser over another.
+
+3.7. Cookies
+
+Before moving to the next section of the tutorial, you may be interested in unnderstanding how to use
+cookies. First of all, you need to be on the domain that the cookis will be valid for:
+
+driver.gett("http://www.example.com")
+
+cookie = {'name': 'foo', 'value': 'bar'}
+driver.add_cookie(cookie)
+
+driver.get_cookies()
